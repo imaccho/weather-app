@@ -11,6 +11,7 @@ const PRESETS = [
   { label: '広島',   query: 'Hiroshima' },
   { label: '那覇',   query: 'Naha' },
   { label: '金沢',   query: 'Kanazawa' },
+  { label: '島根',   query: 'Matsue' },
 ];
 
 function getWeatherInfo(code) {
