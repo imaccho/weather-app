@@ -12,6 +12,7 @@ const PRESETS = [
   { label: '那覇',   query: 'Naha' },
   { label: '金沢',   query: 'Kanazawa' },
   { label: '島根',   query: 'Matsue' },
+  { label: '坂出',   query: 'Sakaide' },
 ];
 
 function getWeatherInfo(code) {
