@@ -39,11 +39,48 @@ async function fetchWeather(query) {
   return json;
 }
 
+function buildHourly(todayHourly) {
+  const nowHour = new Date().getHours();
+  return todayHourly.map(h => {
+    const hour = Math.floor(Number(h.time) / 100);
+    const isNow = Math.abs(hour - nowHour) < 2;
+    const { emoji } = getWeatherInfo(h.weatherCode);
+    const label = hour === 0 ? '0時' : `${hour}時`;
+    return `
+      <div class="hourly-item${isNow ? ' now' : ''}">
+        <div class="hourly-time">${label}</div>
+        <div class="hourly-emoji">${emoji}</div>
+        <div class="hourly-temp">${h.tempC}°</div>
+      </div>`;
+  }).join('');
+}
+
+function buildTomorrow(tomorrowData) {
+  const { emoji, label } = getWeatherInfo(tomorrowData.hourly[4].weatherCode);
+  const date = new Date(tomorrowData.date);
+  const weekdays = ['日', '月', '火', '水', '木', '金', '土'];
+  const dateStr = `${date.getMonth() + 1}/${date.getDate()}（${weekdays[date.getDay()]}）`;
+  return `
+    <div class="tomorrow-card">
+      <div class="tomorrow-left">
+        <div class="tomorrow-date">${dateStr}</div>
+        <div class="tomorrow-label">${label}</div>
+      </div>
+      <div class="tomorrow-center">${emoji}</div>
+      <div class="tomorrow-right">
+        <div class="tomorrow-high">${tomorrowData.maxtempC}°</div>
+        <div class="tomorrow-low">${tomorrowData.mintempC}°</div>
+      </div>
+    </div>`;
+}
+
 function render(data, displayName) {
   const cur = data.current_condition[0];
   const { emoji, label } = getWeatherInfo(cur.weatherCode);
   const wind = Math.round(Number(cur.windspeedKmph) / 3.6 * 10) / 10;
   const timeStr = new Date().toLocaleString('ja-JP', { hour: '2-digit', minute: '2-digit' });
+  const hourlyHTML = buildHourly(data.weather[0].hourly);
+  const tomorrowHTML = buildTomorrow(data.weather[1]);
 
   document.getElementById('content').innerHTML = `
     <div class="weather-main fade" id="weatherMain">
@@ -65,6 +102,10 @@ function render(data, displayName) {
         <div class="detail-label">風速</div>
       </div>
     </div>
+    <div class="section-title">時間別予報</div>
+    <div class="hourly-scroll">${hourlyHTML}</div>
+    <div class="section-title">明日の予報</div>
+    ${tomorrowHTML}
     <div class="updated-at">最終更新 ${timeStr}</div>
   `;
   requestAnimationFrame(() => {

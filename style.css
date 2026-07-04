@@ -192,5 +192,62 @@ body {
   margin-top: 6px;
 }
 
+/* 時間別予報 */
+.section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 22px 0 10px;
+}
+
+.hourly-scroll {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: none;
+}
+.hourly-scroll::-webkit-scrollbar { display: none; }
+
+.hourly-item {
+  flex: 0 0 64px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 10px 6px;
+  text-align: center;
+}
+
+.hourly-time  { font-size: 11px; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+.hourly-emoji { font-size: 22px; line-height: 1; margin-bottom: 4px; }
+.hourly-temp  { font-size: 14px; font-weight: 600; }
+
+.hourly-item.now {
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+/* 翌日予報 */
+.tomorrow-card {
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.tomorrow-left { display: flex; flex-direction: column; gap: 2px; }
+.tomorrow-date { font-size: 12px; color: rgba(255,255,255,0.45); }
+.tomorrow-label { font-size: 15px; font-weight: 500; }
+
+.tomorrow-center { font-size: 40px; line-height: 1; }
+
+.tomorrow-right { text-align: right; }
+.tomorrow-high { font-size: 20px; font-weight: 600; }
+.tomorrow-low  { font-size: 14px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
 .fade { opacity: 0; }
 .fade-in { opacity: 1; transition: opacity 0.4s; }
