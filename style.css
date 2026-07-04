@@ -251,3 +251,155 @@ body {
 
 .fade { opacity: 0; }
 .fade-in { opacity: 1; transition: opacity 0.4s; }
+
+/* 全国マップオーバーレイ */
+.map-overlay {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  z-index: 200;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.map-overlay.hidden { display: none; }
+
+.map-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px 12px;
+  flex-shrink: 0;
+}
+
+.map-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.06em;
+}
+
+.map-close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.map-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 32px;
+  gap: 16px;
+}
+
+/* SVG地図コンテナ */
+.map-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 360 / 460;
+}
+
+.japan-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.island {
+  fill: rgba(255,255,255,0.10);
+  stroke: rgba(255,255,255,0.40);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+/* 天気ピン */
+.map-pin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 1px;
+  transition: transform 0.15s;
+}
+.map-pin:hover { transform: translate(-50%, -50%) scale(1.15); }
+
+.pin-bubble {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.pin-temp {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+  line-height: 1.2;
+}
+
+.pin-name {
+  font-size: 9px;
+  color: rgba(255,255,255,0.75);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9);
+  white-space: nowrap;
+  line-height: 1.2;
+}
+
+/* 沖縄インセット */
+.map-inset {
+  width: 100%;
+  max-width: 360px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.inset-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.inset-city {
+  position: static !important;
+  transform: none !important;
+}
+.inset-city:hover { transform: scale(1.1) !important; }
+
+.inset-loading {
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* 全国ボタン */
+.zenkoku-btn {
+  background: rgba(96,165,250,0.18);
+  border-color: rgba(96,165,250,0.45);
+  color: rgba(255,255,255,0.95);
+  font-weight: 700;
+}

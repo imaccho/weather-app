@@ -18,6 +18,34 @@
       <div class="loading">読み込み中...</div>
     </div>
   </div>
+
+  <!-- 全国マップオーバーレイ -->
+  <div id="mapOverlay" class="map-overlay hidden">
+    <div class="map-header">
+      <span class="map-title">🗾 全国の天気</span>
+      <button class="map-close" onclick="closeMap()">✕</button>
+    </div>
+    <div class="map-stage">
+      <div class="map-wrap" id="mapWrap">
+        <svg class="japan-svg" viewBox="0 0 360 460" xmlns="http://www.w3.org/2000/svg">
+          <!-- 北海道 -->
+          <path class="island" d="M255,44 L270,6 L300,6 L334,24 L356,48 L334,64 L308,80 L278,86 L254,80 L238,68 L242,50 Z"/>
+          <!-- 本州 -->
+          <path class="island" d="M252,92 L272,93 L292,128 L268,196 L248,216 L224,228 L188,228 L158,252 L130,252 L92,252 L54,270 L70,258 L90,212 L122,207 L140,204 L168,190 L186,184 L198,165 L220,156 L238,134 L244,118 L250,104 Z"/>
+          <!-- 四国 -->
+          <path class="island" d="M96,268 L128,262 L158,268 L172,278 L160,290 L134,294 L104,290 L90,280 Z"/>
+          <!-- 九州 -->
+          <path class="island" d="M36,270 L68,268 L96,272 L104,290 L93,315 L72,330 L46,324 L27,307 L30,284 Z"/>
+        </svg>
+        <div id="mapPins"></div>
+      </div>
+      <div class="map-inset" id="mapInset">
+        <span class="inset-label">沖縄</span>
+      </div>
+    </div>
+  </div>
+
   <script src="app.js"></script>
+  <script src="map.js"></script>
 </body>
 </html>
