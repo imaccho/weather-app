@@ -1,0 +1,196 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 28px;
+  padding: 32px 28px 36px;
+  width: 100%;
+  max-width: 440px;
+  color: #fff;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+/* 検索バー */
+.search-wrap {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 11px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input::placeholder { color: rgba(255,255,255,0.35); }
+.search-input:focus { border-color: rgba(255,255,255,0.45); }
+
+.search-btn {
+  padding: 11px 18px;
+  border-radius: 12px;
+  border: none;
+  background: rgba(255,255,255,0.18);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.search-btn:hover { background: rgba(255,255,255,0.28); }
+
+/* プリセット都市 */
+.preset-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 24px;
+}
+
+.preset-btn {
+  padding: 7px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: transparent;
+  color: rgba(255,255,255,0.6);
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.preset-btn:hover { background: rgba(255,255,255,0.12); color: #fff; }
+
+.preset-btn.active {
+  background: rgba(255,255,255,0.22);
+  color: #fff;
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* 天気表示 */
+.weather-main {
+  text-align: center;
+  padding: 8px 0 24px;
+}
+
+.weather-emoji {
+  font-size: 88px;
+  line-height: 1;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+}
+
+.temperature {
+  font-size: 80px;
+  font-weight: 200;
+  letter-spacing: -3px;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.temperature span {
+  font-size: 36px;
+  font-weight: 300;
+  letter-spacing: 0;
+  vertical-align: super;
+  margin-left: 2px;
+}
+
+.weather-label {
+  font-size: 20px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.05em;
+  margin-top: 4px;
+}
+
+.city-name {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  margin-top: 10px;
+  letter-spacing: 0.06em;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 8px 0 22px;
+}
+
+.details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.detail-item {
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+.detail-icon { font-size: 22px; margin-bottom: 4px; }
+.detail-value { font-size: 18px; font-weight: 600; }
+.detail-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; letter-spacing: 0.05em; }
+
+.updated-at {
+  text-align: center;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  margin-top: 18px;
+  letter-spacing: 0.04em;
+}
+
+.loading {
+  text-align: center;
+  padding: 48px 0;
+  font-size: 16px;
+  color: rgba(255,255,255,0.5);
+}
+
+.error {
+  text-align: center;
+  padding: 24px 0;
+  font-size: 14px;
+  color: #ff8a8a;
+  line-height: 1.7;
+}
+
+.retry-btn {
+  margin-top: 14px;
+  padding: 10px 24px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.error-detail {
+  font-size: 11px;
+  color: rgba(255,120,120,0.7);
+  margin-top: 6px;
+}
+
+.fade { opacity: 0; }
+.fade-in { opacity: 1; transition: opacity 0.4s; }
