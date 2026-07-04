@@ -144,13 +144,6 @@ function doSearch() {
 // プリセットボタン生成
 const grid = document.getElementById('presetGrid');
 
-// 全国マップボタン
-const zenkokuBtn = document.createElement('button');
-zenkokuBtn.className = 'preset-btn zenkoku-btn';
-zenkokuBtn.textContent = '🗾 全国';
-zenkokuBtn.addEventListener('click', () => showMap());
-grid.appendChild(zenkokuBtn);
-
 PRESETS.forEach(({ label, query }) => {
   const btn = document.createElement('button');
   btn.className = 'preset-btn';
